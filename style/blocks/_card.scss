@@ -1,0 +1,126 @@
+.card {
+    min-width: 280px;
+    max-width: 330px;
+    & > h3 {
+        margin: 0px;
+        margin-bottom: 5px;
+    }
+    & > img {
+        width: 100%;
+        max-width: 330px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
+.content__card-title {
+    & > input {
+        width: 100%;
+        border: none;
+        outline: none;
+    }
+}
+.content__card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 15px;
+    border-radius: 20px;
+    background: var(--color-light);
+    width: 340px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 22px;
+
+    @include mobile-small {
+        width: 290px;
+    }
+
+    &-list {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 13px;
+    }
+    &-checkbox {
+        display: flex;
+        align-items: flex-start;
+        font-family: "Ubuntu";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--color-gray-alt);
+        transition: all var(--transition-duration);
+        & > span {
+            display: block;
+            margin-right: 10px;
+            min-width: 24px;
+            min-height: 24px;
+            transition: all var(--transition-duration);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='16.506348' height='11.548584' viewBox='0 0 16.5063 11.5486' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdesc%3e Created with Pixso. %3c/desc%3e%3cdefs/%3e%3cpath id='path' d='M0.251221 6.28333L0.2229 6.28333C-0.0742188 5.98645 -0.0742188 5.51965 0.2229 5.22278C0.519775 4.92578 0.986572 4.92578 1.28345 5.22278L1.28345 5.25098L0.251221 6.28333ZM15.2229 0.250977L15.2229 0.222778C15.5198 -0.0742188 15.9866 -0.0742188 16.2834 0.222778C16.5806 0.519653 16.5806 0.98645 16.2834 1.28333L16.2551 1.28333L15.2229 0.250977Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M0.753174 5.75305L5.75317 10.7531L15.7532 0.753052' stroke='%23D1D9E4' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3c/svg%3e ");
+        }
+    }
+    &-checkbox.close {
+        color: var(--color-gray-close);
+        & > span {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='21.506104' height='14.881836' viewBox='0 0 21.5061 14.8818' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdesc%3e Created with Pixso. %3c/desc%3e%3cdefs/%3e%3cpath id='path' d='M0.250977 7.95007L0.222778 7.95007C-0.0742188 7.65308 -0.0742188 7.1864 0.222778 6.8894C0.519653 6.59241 0.98645 6.59241 1.28333 6.8894L1.28333 6.91772L0.250977 7.95007ZM20.2228 0.250977L20.2228 0.222778C20.5197 -0.0742188 20.9865 -0.0742188 21.2833 0.222778C21.5803 0.519653 21.5803 0.98645 21.2833 1.28333L21.2551 1.28333L20.2228 0.250977Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M0.753052 7.41968L7.41968 14.0864L20.7531 0.753052' stroke='%2302E06F' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3c/svg%3e ");
+        }
+    }
+
+    &-text {
+        font-family: "Ubuntu";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--color-gray-alt);
+    }
+    &-label {
+        display: flex;
+        align-items: center;
+        & input {
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+    }
+    &-time {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+        padding-left: 34px;
+        font-family: "Ubuntu";
+        font-size: 10px;
+        font-weight: 400;
+    }
+}
+.time-block {
+    @include flex-center;
+
+    font-family: "Ubuntu";
+    font-size: 10px;
+    font-weight: 400;
+    min-width: 32px;
+    min-height: 32px;
+    color: rgb(196, 196, 196);
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 40px;
+}
+.time-block.active {
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+}
+.photo-block {
+    padding: 0px;
+    & img {
+        width: 100%;
+        height: 200px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
+.content__card-checkbox .time-block {
+    margin-left: auto;
+}

@@ -1,0 +1,174 @@
+.login-page {
+    height: 100vh;
+    background: var(--color-accent);
+}
+.login__logo {
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    & img {
+        margin-bottom: 20px;
+        margin: 0px auto;
+    }
+    & > div {
+        color: var(--color-light);
+    }
+    &__button {
+        height: 0;
+        overflow: hidden;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        transition: all 0.4s;
+        & .button-register {
+            display: none;
+        }
+    }
+    &__button > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-inline: auto;
+        text-align: center;
+        font-size: 36px;
+        font-weight: 400;
+        width: 170px;
+        height: 64px;
+        border-radius: 20px;
+        border: none;
+        color: var(--color-accent);
+        background: var(--color-light);
+        transition: all var(--transition-duration);
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        height: 0;
+        overflow: hidden;
+        transition: all var(--transition-duration);
+    }
+    &__form input {
+        text-align: center;
+        width: 285px;
+        height: 64px;
+        outline: none;
+        font-size: 20px;
+        font-weight: 400;
+        background: none;
+        color: var(--color-light);
+        border-radius: 20px;
+        padding: 18px 10px 11px;
+        border: 2px solid rgb(255, 255, 255);
+    }
+
+    &__form input::placeholder,
+    &__form input:-ms-input-placeholder,
+    &__form input::-ms-input-placeholder {
+        color: var(--color-light);
+        font-size: 30px;
+        font-weight: 300;
+    }
+}
+.login__logo.start .login__logo__button {
+    height: 64px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.go-register,
+.no-register {
+    border: none;
+    background: none;
+    color: var(--color-light);
+}
+.no-register {
+    display: none;
+}
+.login__logo.authorization .login__logo__form {
+    height: 150px;
+    & & label {
+        opacity: 0;
+        animation: slideInUp-fadeIn 2000ms linear forwards;
+        visibility: visible;
+    }
+    & label:nth-child(1) {
+        animation-delay: 1250ms;
+    }
+    & label:nth-child(2) {
+        animation-delay: 1350ms;
+    }
+}
+
+.login__wrapper.register-block {
+    & .button-authorization,
+    & .go-register {
+        display: none;
+    }
+    & .button-register {
+        display: flex;
+        width: 250px;
+    }
+    & .no-register {
+        display: initial;
+    }
+}
+
+.error-block {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    width: 90%;
+    height: 40px;
+    translate: -50% 0;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 20px;
+    background: rgb(255, 126, 131);
+}
+
+.error-block.active {
+    display: flex;
+}
+
+@keyframes slideInUp-fadeIn {
+    0% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 100, 0, 1);
+        opacity: 0;
+    }
+    5.81% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 51.656, 0, 1);
+    }
+    11.61% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 11.991, 0, 1);
+    }
+    17.42% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -8.985, 0, 1);
+    }
+    23.12% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -14.246, 0, 1);
+    }
+    30.33% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -9.789, 0, 1);
+    }
+    37.44% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -3.262, 0, 1);
+    }
+    44.54% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.625, 0, 1);
+        opacity: 1;
+    }
+    51.65% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.624, 0, 1);
+    }
+    80.28% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.185, 0, 1);
+    }
+    100% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,50 @@
+.header {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0px;
+    background: var(--color-gray);
+}
+.header__container {
+    @include flex-center;
+    
+    column-gap: 20px;
+    & a {
+        @include flex-center;
+
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        background: var(--color-light);
+        @include mobile-small {
+            width: 42px;
+            height: 42px;
+        }
+    }
+
+    & a::after {
+        content: "";
+        display: block;
+        width: 34px;
+        height: 34px;
+        background-repeat: no-repeat;
+        background-position: center;
+        @include mobile-small {
+            background-size: 24px 24px;
+        }
+    }
+
+    & a:nth-child(1):after {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='34.000000' height='34.000000' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdesc%3e Created with Pixso. %3c/desc%3e%3cdefs%3e%3cclipPath id='clip438_17518'%3e%3crect id='Rocket' width='34.000000' height='34.000000' fill='white' fill-opacity='0'/%3e%3c/clipPath%3e%3c/defs%3e%3cg clip-path='url(%23clip438_17518)'%3e%3cpath id='path' d='M14.8083 4.29437L15.8213 3.61914C16.5352 3.14331 17.4648 3.14331 18.1787 3.61914L19.1917 4.29437C23.1328 6.92181 25.5 11.3451 25.5 16.0818L25.5 23.375L8.5 23.375L8.5 16.0818C8.5 11.3451 10.8672 6.92181 14.8083 4.29437Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M15.8213 3.61914C16.5352 3.14331 17.4648 3.14331 18.1787 3.61914L19.1917 4.29437C23.1328 6.92181 25.5 11.3451 25.5 16.0818L25.5 23.375L8.5 23.375L8.5 16.0818C8.5 11.3451 10.8672 6.92181 14.8083 4.29437L15.8213 3.61914Z' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round'/%3e%3ccircle id='circle' cx='17.000000' cy='14.166687' r='4.250000' fill='%23000000' fill-opacity='0'/%3e%3ccircle id='circle' cx='17.000000' cy='14.166687' r='4.250000' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000'/%3e%3cpath id='path' d='M7.96094 15.0908L7.96021 15.0625C8.25195 14.7603 8.71851 14.752 9.02075 15.0436C9.323 15.3353 9.3313 15.8019 9.03979 16.1041L9.01147 16.1046L7.96094 15.0908ZM24.9885 16.1046L24.9602 16.1041C24.6687 15.8019 24.677 15.3353 24.9792 15.0436C25.2815 14.752 25.748 14.7603 26.0398 15.0625L26.0391 15.0908L24.9885 16.1046Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M8.5 15.5833L4.25 19.9873L4.25 23.375L29.75 23.375L29.75 19.9873L25.5 15.5833' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3cpath id='path' d='M16.27 26.9369L16.25 26.9169C16.25 26.4969 16.5801 26.1669 17 26.1669C17.4199 26.1669 17.75 26.4969 17.75 26.9169L17.73 26.9369L16.27 26.9369ZM17.73 31.1469L17.75 31.1669C17.75 31.5869 17.4199 31.9169 17 31.9169C16.5801 31.9169 16.25 31.5869 16.25 31.1669L16.27 31.1469L17.73 31.1469Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M17 26.9169L17 31.1669' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3cpath id='path' d='M10.6025 28.3531L10.5825 28.3331C10.5825 27.9131 10.9126 27.5831 11.3325 27.5831C11.7524 27.5831 12.0825 27.9131 12.0825 28.3331L12.0625 28.3531L10.6025 28.3531ZM12.0625 29.73L12.0825 29.75C12.0825 30.17 11.7524 30.5 11.3325 30.5C10.9126 30.5 10.5825 30.17 10.5825 29.75L10.6025 29.73L12.0625 29.73Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M11.3325 28.3331L11.3325 29.75' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3cpath id='path' d='M21.9375 28.3531L21.9175 28.3331C21.9175 27.9131 22.2476 27.5831 22.6675 27.5831C23.0874 27.5831 23.4175 27.9131 23.4175 28.3331L23.3975 28.3531L21.9375 28.3531ZM23.3975 29.73L23.4175 29.75C23.4175 30.17 23.0874 30.5 22.6675 30.5C22.2476 30.5 21.9175 30.17 21.9175 29.75L21.9375 29.73L23.3975 29.73Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M22.6675 28.3331L22.6675 29.75' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3c/g%3e%3c/svg%3e ");
+    }
+    & a:nth-child(2):after {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='32.000000' height='32.000000' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdesc%3e Created with Pixso. %3c/desc%3e%3cdefs%3e%3cclipPath id='clip438_17527'%3e%3crect id='ok' width='32.000000' height='32.000000' fill='white' fill-opacity='0'/%3e%3c/clipPath%3e%3c/defs%3e%3crect id='ok' width='32.000000' height='32.000000' fill='%23000000' fill-opacity='0'/%3e%3cg clip-path='url(%23clip438_17527)'%3e%3cpath id='Vector' d='M29.3335 14.7735L29.3335 16.0001C29.3318 18.8754 28.4006 21.673 26.6792 23.9759C24.9575 26.2788 22.5378 27.9634 19.7805 28.7787C17.0234 29.5939 14.0764 29.496 11.3794 28.4996C8.68237 27.5032 6.37964 25.6616 4.8147 23.2496C3.24976 20.8375 2.50635 17.9843 2.69556 15.1152C2.88477 12.2462 3.99634 9.51526 5.8645 7.32959C7.73267 5.14392 10.2571 3.62067 13.0618 2.987C15.8662 2.35333 18.8005 2.64325 21.4268 3.81348' stroke='%238D9FBB' stroke-opacity='1.000000' stroke-width='2.000000' stroke-linejoin='round' stroke-linecap='round'/%3e%3cpath id='Vector' d='M29.3333 5.33331L16 18.68L12 14.68' stroke='%23000000' stroke-opacity='1.000000' stroke-width='2.000000' stroke-linejoin='round' stroke-linecap='round'/%3e%3c/g%3e%3c/svg%3e ");
+    }
+    & a:nth-child(3):after {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='32.000000' height='32.000000' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdesc%3e Created with Pixso. %3c/desc%3e%3cdefs%3e%3cclipPath id='clip438_17530'%3e%3crect id='Books - Open' width='32.000000' height='32.000000' fill='white' fill-opacity='0'/%3e%3c/clipPath%3e%3c/defs%3e%3cg clip-path='url(%23clip438_17530)'%3e%3cpath id='path' d='M3.33325 4.66669L10.6665 4.66669C13.6121 4.66669 16 7.0545 16 10L16 28C16 25.7909 14.209 24 12 24L3.33325 24L3.33325 4.66669Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M10.6665 4.66669C13.6121 4.66669 16 7.0545 16 10L16 28C16 25.7909 14.209 24 12 24L3.33325 24L3.33325 4.66669L10.6665 4.66669Z' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round'/%3e%3cpath id='path' d='M28.6667 4.66669L21.3333 4.66669C18.3877 4.66669 16 7.0545 16 10L16 28C16 25.7909 17.7908 24 20 24L28.6667 24L28.6667 4.66669Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M21.3333 4.66669C18.3877 4.66669 16 7.0545 16 10L16 28C16 25.7909 17.7908 24 20 24L28.6667 24L28.6667 4.66669L21.3333 4.66669Z' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round'/%3e%3c/g%3e%3c/svg%3e ");
+    }
+    & a:nth-child(4):after {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='32.000000' height='32.000000' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdesc%3e Created with Pixso. %3c/desc%3e%3cdefs%3e%3cclipPath id='clip438_17535'%3e%3crect id='Dollar' width='32.000000' height='32.000000' fill='white' fill-opacity='0'/%3e%3c/clipPath%3e%3c/defs%3e%3cg clip-path='url(%23clip438_17535)'%3e%3cpath id='path' d='M15.27 1.35333L15.25 1.33331C15.25 0.91333 15.5801 0.583313 16 0.583313C16.4199 0.583313 16.75 0.91333 16.75 1.33331L16.73 1.35333L15.27 1.35333ZM16.73 30.6466L16.75 30.6666C16.75 31.0866 16.4199 31.4166 16 31.4166C15.5801 31.4166 15.25 31.0866 15.25 30.6666L15.27 30.6466L16.73 30.6466Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M16 1.33331L16 30.6666' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3cpath id='path' d='M23.3135 3.27002L23.3335 3.25C23.7534 3.25 24.0835 3.58002 24.0835 4C24.0835 4.41998 23.7534 4.75 23.3335 4.75L23.3135 4.72998L23.3135 3.27002ZM13.3135 15.27L13.3335 15.25C13.7534 15.25 14.0835 15.58 14.0835 16C14.0835 16.42 13.7534 16.75 13.3335 16.75L13.3135 16.73L13.3135 15.27Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M23.3335 4C23.3335 4 16.6472 4 13.3335 4C10.0198 4 7.3335 6.68628 7.3335 10C7.3335 13.3137 10.0198 16 13.3335 16' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3cpath id='path' d='M8.68677 28.73L8.66675 28.75C8.24683 28.75 7.91675 28.42 7.91675 28C7.91675 27.58 8.24683 27.25 8.66675 27.25L8.68677 27.27L8.68677 28.73ZM13.3535 16.73L13.3335 16.75C12.9133 16.75 12.5835 16.42 12.5835 16C12.5835 15.58 12.9133 15.25 13.3335 15.25L13.3535 15.27L13.3535 16.73Z' fill='%23000000' fill-opacity='0' fill-rule='nonzero'/%3e%3cpath id='path' d='M8.66675 28C8.66675 28 15.353 28 18.6667 28C21.9805 28 24.6667 25.3137 24.6667 22C24.6667 18.6863 21.9805 16 18.6667 16L13.3335 16' stroke='%23808080' stroke-opacity='1.000000' stroke-width='1.500000' stroke-linejoin='round' stroke-linecap='round'/%3e%3c/g%3e%3c/svg%3e ");
+    }
+}

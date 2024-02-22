@@ -1,0 +1,24 @@
+:root {
+    --color-dark: #000000;
+    --color-light: #ffffff;
+    --color-accent: #02E06F;
+    --color-gray: #F8F8F8;
+    --color-gray-alt: #3D3D3D;
+    --color-gray-close: #8A8A8A;
+
+    --border: 1px solid var(--color-dark);
+    --border-radius-small: 10px;
+    --border-radius: 20px;
+
+    --font-family-base: "TTCommons", sans-serif;
+
+    --container-width: 1240px;
+    --container-padding-x: 16px;
+
+    --section-padding-y: 70px;
+
+    --input-heignt: 59px;
+
+    --transition-duration: 0.2s;
+
+}
