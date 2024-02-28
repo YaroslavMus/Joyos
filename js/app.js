@@ -19,17 +19,13 @@ jQuery(document).ready(function ($) {
         return (`
         <div class="content__card text-block">
             <div class="content__card-title">
-                <span id="editableSpan">${title ? title : 'Что я сделал сегодня? 💪'}</span>
+                <span id="editableSpan">${title ? title : 'Введите заголовок'}</span>
             </div>
             <div class="content__card-list">
                 <div class="content__card-text">
-                    ${text ? text : ''}
+                    ${text ? text : 'Введите текст'}
                 </div>
             </div>
-            <label class="content__card-label">
-                <span class="button-plus"></span>
-                <input type="text">
-            </label>
         </div>
         `)
     }
@@ -39,7 +35,7 @@ jQuery(document).ready(function ($) {
         return (`
         <div class="content__card range-block">
             <div class="content__card-title">
-                <span id="editableSpan">${title ? title : 'Насколько я доволен собой?'}</span>
+                <span id="editableSpan">${title ? title : 'Введите заголовок'}</span>
             </div>
             <label class="content__card-label">
                 <input class="styled-slider slider-progress" type="range" min="0" max="10">
@@ -53,7 +49,7 @@ jQuery(document).ready(function ($) {
     function addBlockCheckbox(title) {
         return (`
         <div class="content__card block-checkbox">
-            <div class="content__card-title"><span id="editableSpan">${title ? title : 'На чем сегодня был фокус?'}</span></div>
+            <div class="content__card-title"><span id="editableSpan">${title ? title : 'Введите заголовок'}</span></div>
             <div class="content__card-list"></div>
             <div class="content__card-time">
                 <div class="time-block" data-time="0">0</div>
@@ -83,16 +79,18 @@ jQuery(document).ready(function ($) {
             let time = '';
             if (activeTimeBlock.length) {
                 time = activeTimeBlock.text();
-            }
 
-            cardList.append(`
-                <div class="content__card-checkbox">
-                    <span></span>
-                    <p>${value}</p>
-                    ${time ? `<div class="time-block" data-time="${time}">${time}</div>` : ''}
-                </div>
-            `);
-            input.val('');
+                cardList.append(`
+                    <div class="content__card-checkbox">
+                        <span></span>
+                        <p>${value}</p>
+                        <div class="time-block" data-time="${time}">${time}</div>
+                    </div>
+                `);
+                input.val('');
+            } else {
+                $(".content__card-time > .time-block").addClass("error");
+            }
         }
     }
 
@@ -121,6 +119,21 @@ jQuery(document).ready(function ($) {
         if (event.which === 13) {
             event.preventDefault();
             const input = $(this);
+            const timeBlocks = $(this).closest('.content__card').find('.content__card-time .time-block');
+            let hasActiveBlock = false;
+
+            // Перебираем каждый блок времени
+            timeBlocks.each(function () {
+                if ($(this).hasClass('active')) {
+                    hasActiveBlock = true;
+                    return false;
+                }
+            });
+            // Если не найден ни один активный блок времени
+            if (!hasActiveBlock) {
+                timeBlocks.addClass('error');
+                return;
+            }
             addNewCheckbox(input);
             updateEventHandlers();
         }
@@ -128,6 +141,21 @@ jQuery(document).ready(function ($) {
     // Функция обработки клика на кнопке "Плюс" в блоке чекбокса
     function handleCheckboxButtonClick() {
         const input = $(this).siblings('input');
+        const timeBlocks = $(this).closest('.content__card').find('.content__card-time .time-block');
+        let hasActiveBlock = false;
+
+        // Перебираем каждый блок времени
+        timeBlocks.each(function () {
+            if ($(this).hasClass('active')) {
+                hasActiveBlock = true;
+                return false;
+            }
+        });
+        // Если не найден ни один активный блок времени
+        if (!hasActiveBlock) {
+            timeBlocks.addClass('error');
+            return;
+        }
         addNewCheckbox(input);
         updateEventHandlers();
     }
@@ -135,8 +163,8 @@ jQuery(document).ready(function ($) {
     // Функция обновления обработчиков событий
     function updateEventHandlers() {
         $('.button-plus').off('click').on('click', handleCheckboxButtonClick);
-
         $('input[type="text"]').off('keypress').on('keypress', handleCheckboxInputKeypress);
+        $('.button-plus').closest('.content__card').find('.content__card-time .time-block').removeClass('active');
     }
 
 
@@ -152,6 +180,10 @@ jQuery(document).ready(function ($) {
         //     success: function (response) {
         //     }
         // });
+        const currentDateInfo = getCurrentDate();
+        $('.container__modal__title h3').text(currentDateInfo.date);
+        $('.modal__title-day').text(currentDateInfo.dayOfWeek);
+        $('.wrapper').addClass('stop');
         $('.modal__block').addClass('open');
     });
 
@@ -167,52 +199,61 @@ jQuery(document).ready(function ($) {
             <div class="content__card-title">
                 Моё настроение на сегодня
             </div>
+            <div class="content__card-emotion">
+                <button>
+                    <img src="./img/😭.png" alt="logo" loading="lazy">
+                </button>
+                <button>
+                    <img src="./img/😐.png" alt="logo" loading="lazy">
+                </button>
+                <button>
+                    <img src="./img/🙂.png" alt="logo" loading="lazy">
+                </button>
+                <button>
+                    <img src="./img/😁.png" alt="logo" loading="lazy">
+                </button>
+                <button>
+                    <img src="./img/😂.png" alt="logo" loading="lazy">
+                </button>
+            </div>
             <div class="content__card-list">
-                <div class="content__card-text">
+                <div class="content__card-text" id='editableText'>
                     Благодарен жене за то, что заботиться об мне, кормить, одевает.
                 </div>
             </div>
-            <label class="content__card-label">
-                <span class="button-plus"></span>
-                <input type="text">
-            </label>
         </div>
         `);
+        $(document).ready(function () {
+            $('.content__card-emotion button').click(function () {
+                $(".content__card-emotion button").removeClass('active');
+                $(this).addClass('active')
+            })
+            $('.content__card-text').click(function () {
+                $(this).addClass('editable').attr('contenteditable', 'true').focus();
+            });
+
+            $('.content__card-text').blur(function () {
+                $(this).removeClass('editable').removeAttr('contenteditable');
+            });
+        });
         $('.modal__block').addClass('open');
     });
 
     // ====================================Текст=================================================
     // Создание Текст блока
     $('#buttonText').click(function () {
-        $('.container__modal__content').append(addBlockText());
+        const newBlock = addBlockText();
+        $('.container__modal__content').append(newBlock);
+
+        $(newBlock).find('.content__card-text').addClass('editable').attr('contenteditable', 'true').focus();
 
         // Привязка обработчика события для кнопки плюс в новом блоке
-        $('.content__card.text-block').last().find('.button-plus').click(function () {
-            const input = $(this).siblings('input');
-            const value = input.val().trim();
-            if (value === '') {
-                return;
-            } else {
-                const textBlock = $(this).closest('.text-block').find('.content__card-text');
-                textBlock.text(value);
-                input.val('');
-            }
+        $('.content__card-text').click(function () {
+            $(this).addClass('editable').attr('contenteditable', 'true').focus();
         });
 
-        // Привязка обработчика события для ввода в новом блоке
-        $('.content__card.text-block').last().find('input[type="text"]').keypress(function (event) {
-            if (event.which === 13) {
-                event.preventDefault();
-                const input = $(this);
-                const value = input.val().trim();
-                if (value === '') {
-                    return;
-                } else {
-                    const textBlock = input.closest('.text-block').find('.content__card-text');
-                    textBlock.text(value);
-                    input.val('');
-                }
-            }
+        $('.content__card-text').blur(function () {
+            $(this).removeClass('editable').removeAttr('contenteditable');
         });
     });
 
@@ -241,6 +282,7 @@ jQuery(document).ready(function ($) {
         $(this).closest('.content__card-checkbox').toggleClass('close');
     });
     $(document).on('click', '.content__card-time div', function () {
+        $('.content__card-time div').removeClass('error');
         $('.content__card-time div').removeClass('active');
         $(this).addClass("active");
     });
@@ -320,7 +362,7 @@ jQuery(document).ready(function ($) {
 
     // ====================================Свайп блока вниз=================================================
     $(document).ready(function () {
-        const hammertime = new Hammer($('.modal__block')[0]);
+        const hammertime = new Hammer($('.cursor-close')[0]);
 
         // Устанавливаем параметры, если это необходимо
         const myOptions = {};
@@ -343,7 +385,19 @@ jQuery(document).ready(function ($) {
             }
         });
     })
-
+    //Редактирование Заголовок 
+    $(document).on('click', '#editableSpan', function () {
+        $(this).addClass('editable').attr('contenteditable', 'true').focus();
+    });
+    $(document).on('blur', '#editableSpan', function () {
+        $(this).removeClass('editable').removeAttr('contenteditable');
+    });
+    $(document).on('click', '.block-checkbox .content__card-checkbox p', function () {
+        $(this).addClass('editable').attr('contenteditable', 'true').focus();
+    });
+    $(document).on('blur', '.block-checkbox .content__card-checkbox p', function () {
+        $(this).removeClass('editable').removeAttr('contenteditable');
+    });
 });
 
 

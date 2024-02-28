@@ -6,6 +6,7 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <title>Joyos</title>
     <link rel="stylesheet" href="./style/style.css">
+   
 </head>
 
 <body>
@@ -36,6 +37,7 @@
         </main>
 
         <div class="modal__block">
+            <div class="cursor-close"></div>
             <div class="container">
                 <div class="container__modal">
                     <div class="container__modal__title">
@@ -43,6 +45,51 @@
                         <span class="modal__title-day"></span>
                     </div>
                     <div class="container__modal__content">
+                        <div class="content__card text-block">
+                            <div class="content__card-title">
+                                <span id="editableSpan">Введите заголовок</span>
+                            </div>
+                            <div class="content__card-list">
+                                <div class="content__card-text">
+                                    Какой то текст
+                                </div>
+                            </div>
+                            <label class="content__card-label">
+                                <input type="text">
+                            </label>
+                        </div>
+                        <div class="content__card range-block">
+                            <div class="content__card-title">
+                                <span id="editableSpan">Введите заголовок</span>
+                            </div>
+                            <label class="content__card-label">
+                                <input class="styled-slider slider-progress" type="range" min="0" max="10">
+                                <span>0</span>
+                            </label>
+                        </div>
+                        <div class="content__card block-checkbox">
+                            <div class="content__card-title"><span id="editableSpan">Введите заголовок</span></div>
+                            <div class="content__card-list">
+                                <div class="content__card-checkbox">
+                                    <span></span>
+                                    <p>Какая то задача</p>
+                                    <div class="time-block" data-time="2 ч">2 ч</div>
+                                </div>
+                            </div>
+                            <div class="content__card-time">
+                                <div class="time-block" data-time="0">0</div>
+                                <div class="time-block" data-time="5 ч">5 ч</div>
+                                <div class="time-block" data-time="15 ч">15 ч</div>
+                                <div class="time-block" data-time="30 ч">30 ч</div>
+                                <div class="time-block" data-time="1 ч">1 ч</div>
+                                <div class="time-block" data-time="1,5 ч">1,5 ч</div>
+                                <div class="time-block" data-time="2 ч">2 ч</div>
+                            </div>
+                            <label class="content__card-label">
+                                <span class="button-plus"></span>
+                                <input type="text">
+                            </label>
+                        </div>
                     </div>
                     <div class="container__modal__header">
                         <button id="buttonText" type="button"></button>

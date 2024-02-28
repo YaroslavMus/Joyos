@@ -6,6 +6,10 @@
 .wrapper {
     display: flex;
     align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .green-button {
