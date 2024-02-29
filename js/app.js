@@ -22,9 +22,7 @@ jQuery(document).ready(function ($) {
                 <span id="editableSpan">${title ? title : 'Введите заголовок'}</span>
             </div>
             <div class="content__card-list">
-                <div class="content__card-text">
-                    ${text ? text : 'Введите текст'}
-                </div>
+                <div class="content__card-text" >${text ? text : 'Введите текст'}</div>
             </div>
         </div>
         `)
@@ -53,9 +51,9 @@ jQuery(document).ready(function ($) {
             <div class="content__card-list"></div>
             <div class="content__card-time">
                 <div class="time-block" data-time="0">0</div>
-                <div class="time-block" data-time="5 ч">5 ч</div>
-                <div class="time-block" data-time="15 ч">15 ч</div>
-                <div class="time-block" data-time="30 ч">30 ч</div>
+                <div class="time-block" data-time="5 м">5 ч</div>
+                <div class="time-block" data-time="15 м">15 ч</div>
+                <div class="time-block" data-time="30 м">30 ч</div>
                 <div class="time-block" data-time="1 ч">1 ч</div>
                 <div class="time-block" data-time="1,5 ч">1,5 ч</div>
                 <div class="time-block" data-time="2 ч">2 ч</div>
@@ -89,7 +87,13 @@ jQuery(document).ready(function ($) {
                 `);
                 input.val('');
             } else {
-                $(".content__card-time > .time-block").addClass("error");
+                cardList.append(`
+                    <div class="content__card-checkbox">
+                        <span></span>
+                        <p>${value}</p>
+                        <div class="time-block" data-time="0">0</div>
+                    </div>
+                `);
             }
         }
     }
@@ -100,7 +104,6 @@ jQuery(document).ready(function ($) {
             $(this).siblings('span').text($(this).val());
         });
     }
-
     // Ползунок 
     function inputRange() {
         $('input[type="range"].slider-progress').each(function () {
@@ -129,12 +132,8 @@ jQuery(document).ready(function ($) {
                     return false;
                 }
             });
-            // Если не найден ни один активный блок времени
-            if (!hasActiveBlock) {
-                timeBlocks.addClass('error');
-                return;
-            }
             addNewCheckbox(input);
+            input.val('');
             updateEventHandlers();
         }
     }
@@ -151,23 +150,16 @@ jQuery(document).ready(function ($) {
                 return false;
             }
         });
-        // Если не найден ни один активный блок времени
-        if (!hasActiveBlock) {
-            timeBlocks.addClass('error');
-            return;
-        }
         addNewCheckbox(input);
+        input.val('');
         updateEventHandlers();
     }
-
     // Функция обновления обработчиков событий
     function updateEventHandlers() {
         $('.button-plus').off('click').on('click', handleCheckboxButtonClick);
         $('input[type="text"]').off('keypress').on('keypress', handleCheckboxInputKeypress);
         $('.button-plus').closest('.content__card').find('.content__card-time .time-block').removeClass('active');
     }
-
-
     // Открытие модального окная по клику на элемент на главной 
     $(document).on('click', '.card', function () {
         // $.ajax({
@@ -181,6 +173,8 @@ jQuery(document).ready(function ($) {
         //     }
         // });
         const currentDateInfo = getCurrentDate();
+        getInputRange();
+        inputRange();
         $('.container__modal__title h3').text(currentDateInfo.date);
         $('.modal__title-day').text(currentDateInfo.dayOfWeek);
         $('.wrapper').addClass('stop');
@@ -217,9 +211,7 @@ jQuery(document).ready(function ($) {
                 </button>
             </div>
             <div class="content__card-list">
-                <div class="content__card-text" id='editableText'>
-                    Благодарен жене за то, что заботиться об мне, кормить, одевает.
-                </div>
+                <div class="content__card-text" id='editableText'>Введите заголовок</div>
             </div>
         </div>
         `);
@@ -229,10 +221,16 @@ jQuery(document).ready(function ($) {
                 $(this).addClass('active')
             })
             $('.content__card-text').click(function () {
+                if ($(this).text() === "Введите заголовок") {
+                    $(this).text('');
+                }
                 $(this).addClass('editable').attr('contenteditable', 'true').focus();
             });
 
             $('.content__card-text').blur(function () {
+                if ($(this).text() === "") {
+                    $(this).text("Введите заголовок");
+                }
                 $(this).removeClass('editable').removeAttr('contenteditable');
             });
         });
@@ -249,10 +247,18 @@ jQuery(document).ready(function ($) {
 
         // Привязка обработчика события для кнопки плюс в новом блоке
         $('.content__card-text').click(function () {
+            console.log($(this).text());
+            if ($(this).text() === "Введите текст") {
+                $(this).text('');
+            }
             $(this).addClass('editable').attr('contenteditable', 'true').focus();
         });
 
         $('.content__card-text').blur(function () {
+            const newText = $(this).text().trim();
+            if (newText === "") {
+                $(this).text("Введите текст");
+            }
             $(this).removeClass('editable').removeAttr('contenteditable');
         });
     });
@@ -278,6 +284,14 @@ jQuery(document).ready(function ($) {
         $('.container__modal__content').append(addBlockCheckbox());
         updateEventHandlers();
     });
+    $(document).on('click', '.content__card-label > input', function () {
+        $(this).closest('.content__card').find('.content__card-time').addClass('active');
+    })
+    $(document).on('blur', '.content__card-label > input', function () {
+        if ($(this).val() === '') {
+            $(this).closest('.content__card').find('.content__card-time').removeClass('active');
+        }
+    })
     $('.container__modal__content').on('click', '.content__card-checkbox > span', function () {
         $(this).closest('.content__card-checkbox').toggleClass('close');
     });
@@ -387,15 +401,31 @@ jQuery(document).ready(function ($) {
     })
     //Редактирование Заголовок 
     $(document).on('click', '#editableSpan', function () {
+        if ($(this).text() === "Введите заголовок") {
+            $(this).text('');
+        }
         $(this).addClass('editable').attr('contenteditable', 'true').focus();
     });
     $(document).on('blur', '#editableSpan', function () {
+        const newText = $(this).text().trim();
+        if (newText === "") {
+            $(this).text("Введите заголовок");
+        }
         $(this).removeClass('editable').removeAttr('contenteditable');
     });
+
+    //Редактирование Текста 
     $(document).on('click', '.block-checkbox .content__card-checkbox p', function () {
+        const item = $(this)
+        $(this).closest('.content__card').find('.content__card-time').addClass('active');
+        $(this).closest('.content__card').find('.content__card-time .time-block').click(function () {
+            const time = $(this).data("time");
+            $(item).siblings('.time-block').attr("data-time", time).text(time);
+        })
         $(this).addClass('editable').attr('contenteditable', 'true').focus();
     });
     $(document).on('blur', '.block-checkbox .content__card-checkbox p', function () {
+        $(this).closest('.content__card').find('.content__card-time').removeClass('active');
         $(this).removeClass('editable').removeAttr('contenteditable');
     });
 });
