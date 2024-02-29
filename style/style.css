@@ -924,8 +924,7 @@ input[type=range].styled-slider.slider-progress:active::-ms-fill-lower {
   font-size: 36px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: auto;
-  margin-top: 30%;
+  margin-bottom: 15%;
 }
 .login__logo img {
   margin-bottom: 20px;

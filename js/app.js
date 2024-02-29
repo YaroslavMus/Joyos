@@ -325,11 +325,10 @@ jQuery(document).ready(function ($) {
 
     // ====================================Анимация Регистрации=================================================
     $(document).ready(function () {
-        setTimeout(function () {
+        $(document).click(function () {
             $('.login__logo').addClass('start');
             $('.go-register').text('Регистрация').fadeIn(500);
-        }, 3000);
-
+        })
         // Обработчик клика на кнопку авторизации
         $(document).on('click', ".button-authorization", function () {
             $('.login__logo').addClass('authorization');
