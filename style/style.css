@@ -913,11 +913,19 @@ input[type=range].styled-slider.slider-progress:active::-ms-fill-lower {
   width: 100%;
   background: var(--color-accent);
 }
+.login-page > .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
 
 .login__logo {
   font-size: 36px;
   font-weight: 400;
   text-align: center;
+  margin-bottom: auto;
+  margin-top: 30%;
 }
 .login__logo img {
   margin-bottom: 20px;
@@ -976,10 +984,25 @@ input[type=range].styled-slider.slider-progress:active::-ms-fill-lower {
   padding: 12px 10px 11px;
   border: 2px solid rgb(255, 255, 255);
 }
-.login__logo__form input::placeholder, .login__logo__form input:-ms-input-placeholder, .login__logo__form input::-ms-input-placeholder {
+
+::-moz-placeholder {
+  opacity: 1 !important;
   color: var(--color-light);
-  font-size: 30px;
-  font-weight: 300;
+}
+
+::placeholder {
+  opacity: 1 !important;
+  color: var(--color-light);
+}
+
+:-ms-input-placeholde {
+  opacity: 1 !important;
+  color: var(--color-light);
+}
+
+::-ms-input-placeholder {
+  opacity: 1 !important;
+  color: var(--color-light);
 }
 
 .login__logo.start .login__logo__button {

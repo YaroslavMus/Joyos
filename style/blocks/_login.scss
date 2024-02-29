@@ -2,11 +2,19 @@
     height: 100vh;
     width: 100%;
     background: var(--color-accent);
+    & > .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
 }
 .login__logo {
     font-size: 36px;
     font-weight: 400;
     text-align: center;
+    margin-bottom: auto;
+    margin-top: 30%;
     & img {
         margin-bottom: 20px;
         margin: 0px auto;
@@ -65,13 +73,26 @@
         border: 2px solid rgb(255, 255, 255);
     }
 
-    &__form input::placeholder,
-    &__form input:-ms-input-placeholder,
-    &__form input::-ms-input-placeholder {
-        color: var(--color-light);
-        font-size: 30px;
-        font-weight: 300;
-    }
+    // &__form > label input::placeholder,
+    // &__form > label input:-ms-input-placeholder,
+    // &__form > label input::-ms-input-placeholder {
+    //     color: var(--color-light);
+    //     opacity: 1;
+    //     font-size: 30px;
+    //     font-weight: 300;
+    // }
+}
+::placeholder {
+    opacity: 1 !important;
+    color: var(--color-light);
+}
+:-ms-input-placeholde {
+    opacity: 1 !important;
+    color: var(--color-light);
+}
+::-ms-input-placeholder {
+    opacity: 1 !important;
+    color: var(--color-light);
 }
 .login__logo.start .login__logo__button {
     height: 64px;
