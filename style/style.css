@@ -444,6 +444,9 @@ main > .container {
   color: var(--color-gray-alt);
   transition: all var(--transition-duration);
 }
+.content__card-checkbox > p {
+  width: 100%;
+}
 .content__card-checkbox > span {
   display: block;
   margin-right: 10px;
@@ -552,8 +555,9 @@ main > .container {
 }
 
 .time-block.active {
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  color: white;
+  background: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0);
 }
 
 .time-block.error {
@@ -906,6 +910,7 @@ input[type=range].styled-slider.slider-progress:active::-ms-fill-lower {
 
 .login-page {
   height: 100vh;
+  width: 100%;
   background: var(--color-accent);
 }
 
@@ -942,6 +947,7 @@ input[type=range].styled-slider.slider-progress:active::-ms-fill-lower {
   width: 170px;
   height: 64px;
   border-radius: 20px;
+  padding-top: 8px;
   border: none;
   color: var(--color-accent);
   background: var(--color-light);
@@ -967,7 +973,7 @@ input[type=range].styled-slider.slider-progress:active::-ms-fill-lower {
   background: none;
   color: var(--color-light);
   border-radius: 20px;
-  padding: 18px 10px 11px;
+  padding: 12px 10px 11px;
   border: 2px solid rgb(255, 255, 255);
 }
 .login__logo__form input::placeholder, .login__logo__form input:-ms-input-placeholder, .login__logo__form input::-ms-input-placeholder {

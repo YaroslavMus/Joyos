@@ -415,16 +415,29 @@ jQuery(document).ready(function ($) {
     });
 
     //Редактирование Текста 
-    $(document).on('click', '.block-checkbox .content__card-checkbox p', function () {
+    $(document).on('click', '.block-checkbox .content__card-checkbox p ', function () {
         const item = $(this)
         $(this).closest('.content__card').find('.content__card-time').addClass('active');
         $(this).closest('.content__card').find('.content__card-time .time-block').click(function () {
             const time = $(this).data("time");
             $(item).siblings('.time-block').attr("data-time", time).text(time);
+            $('.content__card-time .time-block').removeClass('active');
         })
         $(this).addClass('editable').attr('contenteditable', 'true').focus();
     });
+    $(document).on('click', ".block-checkbox .content__card-checkbox .time-block", function () {
+        $('.content__card-time .time-block').removeClass('active');
+        const item = $(this)
+        $(this).closest('.content__card').find('.content__card-time').addClass('active');
+        $(this).closest('.content__card').find('.content__card-time .time-block').click(function () {
+            const time = $(this).data("time");
+            $(item).attr("data-time", time).text(time);
+            $(item).closest('.content__card').find('.content__card-time').removeClass('active');
+        })
+
+    })
     $(document).on('blur', '.block-checkbox .content__card-checkbox p', function () {
+        $('.content__card-time .time-block').removeClass('active');
         $(this).closest('.content__card').find('.content__card-time').removeClass('active');
         $(this).removeClass('editable').removeAttr('contenteditable');
     });

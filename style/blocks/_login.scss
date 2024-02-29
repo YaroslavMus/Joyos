@@ -1,5 +1,6 @@
 .login-page {
     height: 100vh;
+    width: 100%;
     background: var(--color-accent);
 }
 .login__logo {
@@ -34,6 +35,7 @@
         width: 170px;
         height: 64px;
         border-radius: 20px;
+        padding-top: 8px;
         border: none;
         color: var(--color-accent);
         background: var(--color-light);
@@ -59,7 +61,7 @@
         background: none;
         color: var(--color-light);
         border-radius: 20px;
-        padding: 18px 10px 11px;
+        padding: 12px 10px 11px;
         border: 2px solid rgb(255, 255, 255);
     }
 
